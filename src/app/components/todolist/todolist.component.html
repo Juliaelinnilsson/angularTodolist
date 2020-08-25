@@ -1,0 +1,25 @@
+<div class="row addTodo">
+  <div class="col-12">
+
+    <input #newTodo (keyup.enter)="addTodo(newTodo.value)" /><button
+      (click)="addTodo(newTodo.value)"
+    >
+      Add
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <span *ngFor="let todo of todos" class="mt-2">
+      <app-print-todo
+        [todo]="todo"
+        (remove)="deleteTodo($event)"
+      ></app-print-todo>
+    </span>
+  </div>
+  <div class="col-12 sortbuttons">
+    <span class="p-3" *ngIf="todos.length" (click)="sortAZ()">sort A-Z</span>
+    <span class="p-3" *ngIf="todos.length" (click)="sortZA()">sort Z-A</span>
+  </div>
+</div>
